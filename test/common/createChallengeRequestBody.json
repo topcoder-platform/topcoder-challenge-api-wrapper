@@ -1,0 +1,47 @@
+{
+  "typeId": "a9ff50de-0242-4fd2-addc-ed863b9bfab9",
+  "track": "test-track",
+  "name": "test-create",
+  "description": "test-description",
+  "timelineTemplateId": "54cd8ab1-9a93-4f97-9f2a-19ba6f2a7d3a",
+  "phases": [
+    {
+      "id": "af0d5b28-1133-48da-a337-5f3e8340f052",
+      "name": "new-phase-1",
+      "isActive": true,
+      "duration": 1000000
+    },
+    {
+      "id": "786331a5-4852-4e05-97ee-9c3d96c307b0",
+      "name": "new-PHASE-2",
+      "description": "add-description-in-put",
+      "predecessor": "af0d5b28-1133-48da-a337-5f3e8340f052",
+      "isActive": true,
+      "duration": 2000000
+    }
+  ],
+  "prizeSets": [
+    {
+      "type": "Challenge prizes",
+      "description": "desc",
+      "prizes": [
+        {
+          "description": "desc-first",
+          "type": "first place",
+          "value": 500
+        },
+        {
+          "description": "desc-second",
+          "type": "second place",
+          "value": 250
+        }
+      ]
+    }
+  ],
+  "reviewType": "review type",
+  "tags": ["tag1", "tag2"],
+  "projectId": 123,
+  "forumId": 456,
+  "status": "Draft",
+  "startDate": "2019-06-22T16:28:39.882Z"
+}

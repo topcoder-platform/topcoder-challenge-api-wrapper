@@ -1,0 +1,73 @@
+[
+  {
+    "id": "string",
+    "legacyId": 0,
+    "type": "challenge type name",
+    "track": "string",
+    "name": "string",
+    "description": "string",
+    "challengeSettings": [
+      {
+        "type": "challenge setting name",
+        "value": "string"
+      }
+    ],
+    "timelineTemplateId": "string",
+    "phases": [
+      {
+        "id": "string",
+        "name": "string",
+        "description": "string",
+        "predecessor": "string",
+        "isActive": true,
+        "duration": 0
+      }
+    ],
+    "prizeSets": [
+      {
+        "type": "string",
+        "description": "string",
+        "prizes": [
+          {
+            "description": "string",
+            "type": "string",
+            "value": 0
+          }
+        ]
+      }
+    ],
+    "reviewType": "string",
+    "tags": [
+      "string"
+    ],
+    "projectId": 0,
+    "forumId": 0,
+    "startDate": "2019-10-27T06:08:57.170Z",
+    "status": "Draft",
+    "attachments": [
+      {
+        "id": "string",
+        "fileSize": 0,
+        "fileName": "string",
+        "challengeId": "string"
+      }
+    ],
+    "groups": [
+      "string"
+    ],
+    "gitRepoURLs": [
+      "string"
+    ],
+    "winners": [
+      {
+        "userId": 0,
+        "handle": "string",
+        "placement": 1
+      }
+    ],
+    "created": "2019-10-27T06:08:57.170Z",
+    "createdBy": "topcoder user",
+    "updated": "2019-10-27T06:08:57.170Z",
+    "updatedBy": "topcoder user"
+  }
+]

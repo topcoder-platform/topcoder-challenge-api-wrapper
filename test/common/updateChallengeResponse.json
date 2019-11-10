@@ -1,0 +1,70 @@
+{
+  "id": "string",
+  "typeId": "challenge type id",
+  "track": "string",
+  "name": "string",
+  "description": "string",
+  "challengeSettings": [
+    {
+      "type": "challenge setting id",
+      "value": "string"
+    }
+  ],
+  "timelineTemplateId": "string",
+  "phases": [
+    {
+      "id": "string",
+      "name": "string",
+      "description": "string",
+      "predecessor": "string",
+      "isActive": true,
+      "duration": 0
+    }
+  ],
+  "prizeSets": [
+    {
+      "type": "string",
+      "description": "string",
+      "prizes": [
+        {
+          "description": "string",
+          "type": "string",
+          "value": 0
+        }
+      ]
+    }
+  ],
+  "reviewType": "string",
+  "tags": [
+    "string"
+  ],
+  "projectId": 0,
+  "forumId": 0,
+  "startDate": "2019-10-28T05:06:43.059Z",
+  "status": "Draft",
+  "attachments": [
+    {
+      "id": "string",
+      "fileSize": 0,
+      "fileName": "string",
+      "challengeId": "string"
+    }
+  ],
+  "groups": [
+    "string"
+  ],
+  "gitRepoURLs": [
+    "string"
+  ],
+  "winners": [
+    {
+      "userId": 0,
+      "handle": "string",
+      "placement": 1
+    }
+  ],
+  "created": "2019-10-28T05:06:43.059Z",
+  "createdBy": "topcoder user",
+  "updated": "2019-10-28T05:06:43.059Z",
+  "updatedBy": "topcoder user"
+}
