@@ -106,7 +106,27 @@ Method | HTTP request | Description
 [**createChallengeType**](docs/ChallengeTypesApi.md#createchallengetype) | **POST** /challengeTypes | Create a challengeType.
 [**getChallengeType**](docs/ChallengeTypesApi.md#getchallengetype) | **GET** /challengeTypes/:challengeTypeId | Get the challengeType.
 [**updateChallengeType**](docs/ChallengeTypesApi.md#updatechallengetype) | **PUT** /challengeTypes/:challengeTypeId | Fully update challengeType.
-[**patchChallengeType**](ChallengeTypesApi.md#patchchallengetype) | **PATCH** /challengeTypes/:challengeTypeId | Partially update challengeType.
+[**patchChallengeType**](docs/ChallengeTypesApi.md#patchchallengetype) | **PATCH** /challengeTypes/:challengeTypeId | Partially update challengeType.
+
+### ChallengeSettings wrapper methods
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**searchChallengeSettings**](docs/ChallengeSettingsApi.md#searchchallengesettings) | **GET** /challengeSettings | Search challengeSettings.
+[**createChallengeSetting**](docs/ChallengeSettingsApi.md#createchallengesetting) | **POST** /challengeSettings | Create a challengeSetting.
+[**getChallengeSetting**](docs/ChallengeSettingsApi.md#getchallengesetting) | **GET** /challengeSettings/:challengeSettingId | Get the challengeSetting.
+[**updateChallengeSetting**](docs/ChallengeSettingsApi.md#updatechallengesetting) | **PUT** /challengeSettings/:challengeSettingId | Fully update challengeSetting.
+
+### ChallengePhases wrapper methods
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**searchChallengePhases**](docs/ChallengePhasesApi.md#searchchallengephases) | **GET** /challengePhases | Search challengePhases.
+[**createChallengePhase**](docs/ChallengePhasesApi.md#createchallengephase) | **POST** /challengePhases | Create a challengePhase.
+[**getChallengePhase**](docs/ChallengePhasesApi.md#getchallengephase) | **GET** /challengePhases/:challengePhaseId | Get the challengePhase.
+[**updateChallengePhase**](docs/ChallengePhasesApi.md#updatechallengephase) | **PUT** /challengePhases/:challengePhaseId | Fully update challengePhase.
+[**patchChallengePhase**](docs/ChallengePhasesApi.md#patchchallengephase) | **PATCH** /challengePhases/:challengePhaseId | Partially update challengePhase.
+[**deleteChallengePhase**](docs/ChallengePhasesApi.md#deletechallengephase) | **DELETE** /challengePhases/:challengePhaseId | Delete challengePhase.
 
 ## Authorization
 

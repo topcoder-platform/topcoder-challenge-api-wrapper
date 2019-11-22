@@ -93,6 +93,76 @@ prepare(function (done) {
       }
       return [200, testData.ResponseBody.patchChallengeTypeResponse]
     })
+    .get(/\/challengeSettings\/.*/)
+    .reply(function (_uri, _requestBody) {
+      if (this.req.headers.authorization === 'Bearer invalid_token') {
+        return [400, { message: 'Unkown Error' }]
+      }
+      return [200, testData.ResponseBody.getChallengeSettingResponse]
+    })
+    .get(/\/challengeSettings.*/)
+    .reply(function (_uri, _requestBody) {
+      if (this.req.headers.authorization === 'Bearer invalid_token') {
+        return [400, { message: 'Unkown Error' }]
+      }
+      return [200, testData.ResponseBody.searchChallengeSettingsResponse]
+    })
+    .post('/challengeSettings')
+    .reply(function (_uri, _requestBody) {
+      if (this.req.headers.authorization === 'Bearer invalid_token') {
+        return [400, { message: 'Unkown Error' }]
+      }
+      return [200, testData.ResponseBody.createChallengeSettingResponse]
+    })
+    .put(/\/challengeSettings\/.+/)
+    .reply(function (_uri, _requestBody) {
+      if (this.req.headers.authorization === 'Bearer invalid_token') {
+        return [400, { message: 'Unkown Error' }]
+      }
+      return [200, testData.ResponseBody.updateChallengeSettingResponse]
+    })
+    .get(/\/challengePhases\/.*/)
+    .reply(function (_uri, _requestBody) {
+      if (this.req.headers.authorization === 'Bearer invalid_token') {
+        return [400, { message: 'Unkown Error' }]
+      }
+      return [200, testData.ResponseBody.getChallengePhaseResponse]
+    })
+    .get(/\/challengePhases.*/)
+    .reply(function (_uri, _requestBody) {
+      if (this.req.headers.authorization === 'Bearer invalid_token') {
+        return [400, { message: 'Unkown Error' }]
+      }
+      return [200, testData.ResponseBody.searchChallengePhasesResponse]
+    })
+    .post('/challengePhases')
+    .reply(function (_uri, _requestBody) {
+      if (this.req.headers.authorization === 'Bearer invalid_token') {
+        return [400, { message: 'Unkown Error' }]
+      }
+      return [200, testData.ResponseBody.createChallengePhaseResponse]
+    })
+    .put(/\/challengePhases\/.+/)
+    .reply(function (_uri, _requestBody) {
+      if (this.req.headers.authorization === 'Bearer invalid_token') {
+        return [400, { message: 'Unkown Error' }]
+      }
+      return [200, testData.ResponseBody.updateChallengePhaseResponse]
+    })
+    .patch(/\/challengePhases\/.+/)
+    .reply(function (_uri, _requestBody) {
+      if (this.req.headers.authorization === 'Bearer invalid_token') {
+        return [400, { message: 'Unkown Error' }]
+      }
+      return [200, testData.ResponseBody.patchChallengePhaseResponse]
+    })
+    .delete(/\/challengePhases\/.+/)
+    .reply(function (_uri, _requestBody) {
+      if (this.req.headers.authorization === 'Bearer invalid_token') {
+        return [400, { message: 'Unkown Error' }]
+      }
+      return [200, testData.ResponseBody.deleteChallengePhaseResponse]
+    })
   done()
 }, function (done) {
   done()

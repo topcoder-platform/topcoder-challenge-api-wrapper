@@ -1,0 +1,7 @@
+{
+  "name": "Registration",
+  "description": "registration phase",
+  "predecessor": "a1532a8c-f385-44ed-936d-2d408ee5d22c",
+  "isActive": true,
+  "duration": 120000
+}

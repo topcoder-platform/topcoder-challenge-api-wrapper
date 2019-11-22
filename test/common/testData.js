@@ -46,6 +46,29 @@ const createChallengeTypeResponse = require('./createChallengeTypeResponse.json'
 const updateChallengeTypeResponse = require('./updateChallengeTypeResponse.json')
 const patchChallengeTypeResponse = require('./patchChallengeTypeResponse.json')
 
+// challengeSettingsApi
+const createChallengeSettingRequestBody = { name: 'challenge-setting-name' }
+const updateChallengeSettingRequestBody = { name: 'challenge-setting-name-update' }
+
+const createChallengeSettingResponse = Object.assign({}, createChallengeSettingRequestBody, {
+  id: '9c5f6840-219b-45c4-8826-ff18fa012346'
+})
+const getChallengeSettingResponse = createChallengeSettingResponse
+const updateChallengeSettingResponse = Object.assign({}, getChallengeSettingResponse, updateChallengeSettingRequestBody)
+const searchChallengeSettingsResponse = [getChallengeSettingResponse]
+
+// challengePhasesApi
+const createChallengePhaseRequestBody = require('./createChallengePhaseRequestBody.json')
+const updateChallengePhaseRequestBody = Object.assign({}, createChallengePhaseRequestBody, { name: 'review' })
+const patchChallengePhaseRequestBody = { isActive: false }
+
+const createChallengePhaseResponse = require('./createChallengePhaseResponse.json')
+const getChallengePhaseResponse = createChallengePhaseResponse
+const searchChallengePhasesResponse = [createChallengePhaseResponse]
+const updateChallengePhaseResponse = Object.assign({}, createChallengePhaseResponse, updateChallengePhaseRequestBody)
+const patchChallengePhaseResponse = Object.assign({}, createChallengePhaseResponse, patchChallengePhaseRequestBody)
+const deleteChallengePhaseResponse = createChallengePhaseResponse
+
 module.exports = {
   Url: {
     CHALLENGE_API_URL
@@ -87,7 +110,12 @@ module.exports = {
     patchChallengeRequestBody,
     createChallengeTypeRequestBody,
     updateChallengeTypeRequestBody,
-    patchChallengeTypeRequestBody
+    patchChallengeTypeRequestBody,
+    createChallengeSettingRequestBody,
+    updateChallengeSettingRequestBody,
+    createChallengePhaseRequestBody,
+    updateChallengePhaseRequestBody,
+    patchChallengePhaseRequestBody
   },
   ResponseBody: {
     Authv2: {
@@ -118,7 +146,17 @@ module.exports = {
     getChallengeTypeResponse,
     createChallengeTypeResponse,
     updateChallengeTypeResponse,
-    patchChallengeTypeResponse
+    patchChallengeTypeResponse,
+    createChallengeSettingResponse,
+    searchChallengeSettingsResponse,
+    getChallengeSettingResponse,
+    updateChallengeSettingResponse,
+    createChallengePhaseResponse,
+    getChallengePhaseResponse,
+    searchChallengePhasesResponse,
+    updateChallengePhaseResponse,
+    patchChallengePhaseResponse,
+    deleteChallengePhaseResponse
   },
   RequestQuery: {
     searchChallenges: {
@@ -145,6 +183,16 @@ module.exports = {
       name: 'Code',
       description: 'Code',
       isActive: true
+    },
+    searchChallengeSettings: {
+      page: 1,
+      perPage: 10,
+      name: 'Code'
+    },
+    searchChallengePhases: {
+      page: 1,
+      perPage: 10,
+      name: 'Registration'
     }
   }
 }

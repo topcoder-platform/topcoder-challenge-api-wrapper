@@ -128,6 +128,48 @@ module.exports = (allConfig) => {
     // Partially update challengeType
     patchChallengeType: (challengeTypeId, reqBody, jwt) => {
       return require('./src/ChallengeTypesApi').patchChallengeType(config, challengeTypeId, reqBody, jwt)
+    },
+    // -- challengeSetting APIs --
+    // Search challengeSettings
+    searchChallengeSettings: (reqQuery, jwt) => {
+      return require('./src/ChallengeSettingsApi').searchChallengeSettings(config, reqQuery, jwt)
+    },
+    // Create challengeSetting
+    createChallengeSetting: (reqFormData, jwt) => {
+      return require('./src/ChallengeSettingsApi').createChallengeSetting(config, reqFormData, jwt)
+    },
+    // Get challengeSetting
+    getChallengeSetting: (challengeSettingId, jwt) => {
+      return require('./src/ChallengeSettingsApi').getChallengeSetting(config, challengeSettingId, jwt)
+    },
+    // Fully update challengeSetting
+    updateChallengeSetting: (challengeSettingId, reqBody, jwt) => {
+      return require('./src/ChallengeSettingsApi').updateChallengeSetting(config, challengeSettingId, reqBody, jwt)
+    },
+    // -- challengePhase APIs --
+    // Search challengePhases
+    searchChallengePhases: (reqQuery, jwt) => {
+      return require('./src/ChallengePhasesApi').searchChallengePhases(config, reqQuery, jwt)
+    },
+    // Create challengePhase
+    createChallengePhase: (reqFormData, jwt) => {
+      return require('./src/ChallengePhasesApi').createChallengePhase(config, reqFormData, jwt)
+    },
+    // Get challengePhase
+    getChallengePhase: (challengePhaseId, jwt) => {
+      return require('./src/ChallengePhasesApi').getChallengePhase(config, challengePhaseId, jwt)
+    },
+    // Fully update challengePhase
+    updateChallengePhase: (challengePhaseId, reqBody, jwt) => {
+      return require('./src/ChallengePhasesApi').updateChallengePhase(config, challengePhaseId, reqBody, jwt)
+    },
+    // Partially update challengePhase
+    patchChallengePhase: (challengePhaseId, reqBody, jwt) => {
+      return require('./src/ChallengePhasesApi').patchChallengePhase(config, challengePhaseId, reqBody, jwt)
+    },
+    // Get challengePhase
+    deleteChallengePhase: (challengePhaseId, jwt) => {
+      return require('./src/ChallengePhasesApi').deleteChallengePhase(config, challengePhaseId, jwt)
     }
   }
 }
