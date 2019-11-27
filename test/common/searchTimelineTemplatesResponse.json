@@ -1,0 +1,29 @@
+[
+  {
+    "id": "33225132-79fa-4d13-a9ac-71f50020dc10",
+    "name": "template-1",
+    "isActive": true,
+    "phases": [
+      {
+        "id": "74315132-79fa-4d13-a9ac-71f50020dc10",
+        "name": "Submission",
+        "isActive": true,
+        "duration": 86400
+      },
+      {
+        "id": "74315132-79fa-4d13-a9ac-71f50020dc11",
+        "name": "Review",
+        "description": "Review phase",
+        "isActive": true,
+        "duration": 86400
+      },
+      {
+        "id": "74315132-79fa-4d13-a9ac-71f50020dc12",
+        "name": "Appeal",
+        "predecessor": "74315132-79fa-4d13-a9ac-71f50020dc11",
+        "isActive": true,
+        "duration": 86400
+      }
+    ]
+  }
+]

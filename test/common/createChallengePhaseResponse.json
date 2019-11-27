@@ -1,0 +1,8 @@
+{
+  "id": "60e15bda-f5c4-4c10-8672-495c1b213484",
+  "name": "registration",
+  "description": "registration phase",
+  "predecessor": "a1532a8c-f385-44ed-936d-2d408ee5d22c",
+  "isActive": true,
+  "duration": 120000
+}

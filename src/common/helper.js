@@ -147,11 +147,67 @@ const buildURLwithParams = (url, params) => {
       queryParams += `${key}=${params[key]}&`
     }
   }
-  return url + queryParams
+  return encodeURI(url + queryParams)
+}
+
+/**
+ * Function to send request to V5 API with file
+ * @param {Object} config Configuration object
+ * @param {String} jwt The JWT
+ * @param (String) path Complete path of the API URL
+ * @param {Object} formData multiple part form data
+ * @param {String} the file field name in formData
+ * @returns {Promise}
+ */
+const reqToV5APIWithFile = async (config, jwt, path, formData, fileFieldName) => {
+  const token = await getToken(config, jwt)
+  if (formData[fileFieldName] && formData[fileFieldName].data && formData[fileFieldName].name) {
+    return request
+      .post(path)
+      .set('Authorization', `Bearer ${token}`)
+      .field(_.omit(formData, fileFieldName))
+      .attach(fileFieldName, formData[fileFieldName].data, formData[fileFieldName].name)
+  } else {
+    return request
+      .post(path)
+      .set('Authorization', `Bearer ${token}`)
+      .field(_.omit(formData, fileFieldName))
+  }
+}
+
+/**
+ * Function to download file using V5 API
+ * @param {Object} config Configuration object
+ * @param {String} jwt The JWT
+ * @param (String) path Complete path of the API URL
+ * @returns {Promise}
+ */
+const reqToV5APIDownload = async (config, jwt, path) => {
+  const token = await getToken(config, jwt)
+  return request
+    .get(path)
+    .set('Authorization', `Bearer ${token}`)
+    .buffer(true)
+    .parse(function (res, callback) {
+      res.data = ''
+      res.setEncoding('binary')
+      res.on('data', function (chunk) {
+        res.data += chunk
+      })
+      res.on('end', function () {
+        if (/application\/json/.test(res.headers['content-type'])) {
+          callback(null, JSON.parse(res.data))
+        } else {
+          callback(null, Buffer.from(res.data, 'binary'))
+        }
+      })
+    })
 }
 
 module.exports = {
   reqToV5API,
+  reqToV5APIWithFile,
+  reqToV5APIDownload,
   buildURLwithParams,
   getToken
 }

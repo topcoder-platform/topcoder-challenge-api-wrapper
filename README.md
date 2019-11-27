@@ -106,7 +106,48 @@ Method | HTTP request | Description
 [**createChallengeType**](docs/ChallengeTypesApi.md#createchallengetype) | **POST** /challengeTypes | Create a challengeType.
 [**getChallengeType**](docs/ChallengeTypesApi.md#getchallengetype) | **GET** /challengeTypes/:challengeTypeId | Get the challengeType.
 [**updateChallengeType**](docs/ChallengeTypesApi.md#updatechallengetype) | **PUT** /challengeTypes/:challengeTypeId | Fully update challengeType.
-[**patchChallengeType**](ChallengeTypesApi.md#patchchallengetype) | **PATCH** /challengeTypes/:challengeTypeId | Partially update challengeType.
+[**patchChallengeType**](docs/ChallengeTypesApi.md#patchchallengetype) | **PATCH** /challengeTypes/:challengeTypeId | Partially update challengeType.
+
+### ChallengeSettings wrapper methods
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**searchChallengeSettings**](docs/ChallengeSettingsApi.md#searchchallengesettings) | **GET** /challengeSettings | Search challengeSettings.
+[**createChallengeSetting**](docs/ChallengeSettingsApi.md#createchallengesetting) | **POST** /challengeSettings | Create a challengeSetting.
+[**getChallengeSetting**](docs/ChallengeSettingsApi.md#getchallengesetting) | **GET** /challengeSettings/:challengeSettingId | Get the challengeSetting.
+[**updateChallengeSetting**](docs/ChallengeSettingsApi.md#updatechallengesetting) | **PUT** /challengeSettings/:challengeSettingId | Fully update challengeSetting.
+
+### ChallengePhases wrapper methods
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**searchChallengePhases**](docs/ChallengePhasesApi.md#searchchallengephases) | **GET** /challengePhases | Search challengePhases.
+[**createChallengePhase**](docs/ChallengePhasesApi.md#createchallengephase) | **POST** /challengePhases | Create a challengePhase.
+[**getChallengePhase**](docs/ChallengePhasesApi.md#getchallengephase) | **GET** /challengePhases/:challengePhaseId | Get the challengePhase.
+[**updateChallengePhase**](docs/ChallengePhasesApi.md#updatechallengephase) | **PUT** /challengePhases/:challengePhaseId | Fully update challengePhase.
+[**patchChallengePhase**](docs/ChallengePhasesApi.md#patchchallengephase) | **PATCH** /challengePhases/:challengePhaseId | Partially update challengePhase.
+[**deleteChallengePhase**](docs/ChallengePhasesApi.md#deletechallengephase) | **DELETE** /challengePhases/:challengePhaseId | Delete challengePhase.
+
+### TimelineTemplates wrapper methods
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**searchTimelineTemplates**](docs/TimelineTemplatesApi.md#searchtimelinetemplates) | **GET** /timelineTemplates | Search timelineTemplates.
+[**createTimelineTemplate**](docs/TimelineTemplatesApi.md#createtimelinetemplate) | **POST** /timelineTemplate | Create a timelineTemplate.
+[**getTimelineTemplate**](docs/TimelineTemplatesApi.md#gettimelinetemplate) | **GET** /timelineTemplates/:timelineTemplateId | Get the timelineTemplate.
+[**updateTimelineTemplate**](docs/TimelineTemplatesApi.md#updatetimelinetemplate) | **PUT** /timelineTemplates/:timelineTemplateId | Fully update timelineTemplate.
+[**patchTimelineTemplate**](docs/TimelineTemplatesApi.md#patchtimelinetemplate) | **PATCH** /timelineTemplates/:timelineTemplateId | Partially update timelineTemplate.
+[**deleteTimelineTemplate**](docs/TimelineTemplatesApi.md#deletetimelinetemplate) | **DELETE** /timelineTemplates/:timelineTemplateId | Delete the timelineTemplate.
+
+### ChallengeAuditLogs wrapper methods
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**searchChallengeAuditLogs**](docs/ChallengeAuditLogsApi.md#searchchallengeauditlogs) | **GET** /challengeAuditLogs | Search challenge auditLogs.
+
+### ChallengeAttachments wrapper methods
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**createChallengeAttachment**](docs/ChallengeAttachmentsApi.md#createchallengeattachment) | **POST** /challenges/:challengeId/attachments | Create a challenge attachment.
+[**downloadChallengeAttachment**](docs/ChallengeAttachmentsApi.md#downloadchallengeattachment) | **GET** /challenges/:challengeId/attachments/:attachmentId | Download a challenge attachment.
 
 ## Authorization
 

@@ -1,20 +1,22 @@
-# ChallengeTypes Api
+# ChallengePhases Api
 
 All URIs are relative to **CHALLENGE_API_URL** configuration variable.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**searchChallengeTypes**](ChallengeTypesApi.md#searchchallengetypes) | **GET** /challengeTypes | Search challengeTypes.
-[**createChallengeType**](ChallengeTypesApi.md#createchallengetype) | **POST** /challengeTypes | Create a challengeType.
-[**getChallengeType**](ChallengeTypesApi.md#getchallengetype) | **GET** /challengeTypes/:challengeTypeId | Get the challengeType.
-[**updateChallengeType**](ChallengeTypesApi.md#updatechallengetype) | **PUT** /challengeTypes/:challengeTypeId | Fully update challengeType.
-[**patchChallengeType**](ChallengeTypesApi.md#patchchallengetype) | **PATCH** /challengeTypes/:challengeTypeId | Partially update challengeType.
+[**searchChallengePhases**](#searchchallengephases) | **GET** /challengePhases | Search challengePhases.
+[**createChallengePhase**](#createchallengephase) | **POST** /challengePhases | Create a challengePhase.
+[**getChallengePhase**](#getchallengephase) | **GET** /challengePhases/:challengePhaseId | Get the challengePhase.
+[**updateChallengePhase**](#updatechallengephase) | **PUT** /challengePhases/:challengePhaseId | Fully update challengePhase.
+[**patchChallengePhase**](#patchchallengephase) | **PATCH** /challengePhases/:challengePhaseId | Partially update challengePhase.
+[**deleteChallengePhase**](#deletechallengephase) | **DELETE** /challengePhases/:challengePhaseId | Delete challengePhase.
 
-<a name="searchChallengeTypes"></a>
-# **searchChallengeTypes**
-> searchChallengeTypes(reqQuery[, jwt])
+<a name="searchChallengePhases"></a>
 
-Search challengeTypes. Link headers are sent back and they have rel set to prev, next, first, last and contain the relevant URL.
+# **searchChallengePhases**
+> searchChallengePhases(reqQuery[, jwt])
+
+Search challengePhases. Link headers are sent back and they have rel set to prev, next, first, last and contain the relevant URL.
 
 ### Example
 ```javascript
@@ -34,67 +36,61 @@ const challengeApiJwtMethodArgClient = challengeApi(_.pick(config,
 const reqQuery = {
   page: 1,
   perPage: 10,
-  name: 'Code',
-  description: 'Code',
-  isActive: true
+  name: 'Code'
 }
 
 
 // Promise model
 challengeApiM2MClient
-  .searchChallengeTypes(reqQuery)
+  .searchChallengePhases(reqQuery)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiUserCredentialsClient
-  .searchChallengeTypes(reqQuery)
+  .searchChallengePhases(reqQuery)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 
 challengeApiJwtMethodArgClient
-  .searchChallengeTypes(reqQuery, config.JWT)
-// or
-// challengeApiJwtMethodArgClient
-//   .searchChallengeTypes(reqQuery)
+  .searchChallengePhases(reqQuery, config.JWT)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 // Async / await model
-await challengeApiM2MClient.searchChallengeTypes(reqQuery)
+await challengeApiM2MClient.searchChallengePhases(reqQuery)
 
-await challengeApiUserCredentialsClient.searchChallengeTypes(reqQuery)
+await challengeApiUserCredentialsClient.searchChallengePhases(reqQuery)
 
-await challengeApiJwtMethodArgClient.searchChallengeTypes(reqQuery, config.JWT)
-// or
-// await challengeApiJwtMethodArgClient.searchChallengeTypes(reqQuery)
+await challengeApiJwtMethodArgClient.searchChallengePhases(reqQuery, config.JWT)
 ```
 
 ### Parameters
 
-Name | Type | Description
+Name | Phase | Description
 ------------- | ------------- | -------------
- **reqQuery** | [**SearchChallengeTypesCriteria**](SearchChallengeTypesCriteria.md)| the search challengeTypes criteria
+ **reqQuery** | [**SearchChallengePhasesCriteria**](SearchChallengePhasesCriteria.md)| the search challengePhases criteria
  **jwt**      | String | the optional json web token
 
 ### Return type
 
-Array of [**ChallengeType**](ChallengeType.md)
+Array of [**Phase**](Phase.md)
 
 ### Authorization
 
-**None**
+[Bearer](../README.md#authorization)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="createChallengeType"></a>
-# **createChallengeType**
-> createChallengeType(reqBody[, jwt])
+<a name="createChallengePhase"></a>
 
-Create a challengeType.
+# **createChallengePhase**
+> createChallengePhase(reqBody[, jwt])
+
+Create a challengePhase.
 
 ### Example
 ```javascript
@@ -111,46 +107,48 @@ const challengeApiUserCredentialsClient = challengeApi(_.pick(config,
 const challengeApiJwtMethodArgClient = challengeApi(_.pick(config, 'CHALLENGE_API_URL'))
 
 const reqBody = {
-  name: 'Code',
-  description: 'Code',
-  isActive: true
+  name: 'new-PHASE-2',
+  description: 'add-description-in-put',
+  predecessor: 'af0d5b28-1133-48da-a337-5f3e8340f052',
+  isActive: true,
+  duration: 2000000
 }
 
 
 // Promise model
 challengeApiM2MClient
-  .createChallengeType(reqBody)
+  .createChallengePhase(reqBody)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiUserCredentialsClient
-  .createChallengeType(reqBody)
+  .createChallengePhase(reqBody)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiJwtMethodArgClient
-  .createChallengeType(reqBody, config.JWT)
+  .createChallengePhase(reqBody, config.JWT)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 // Async / await model
-await challengeApiM2MClient.createChallengeType(reqBody)
+await challengeApiM2MClient.createChallengePhase(reqBody)
 
-await challengeApiUserCredentialsClient.createChallengeType(reqBody)
+await challengeApiUserCredentialsClient.createChallengePhase(reqBody)
 
-await challengeApiJwtMethodArgClient.createChallengeType(reqBody, config.JWT)
+await challengeApiJwtMethodArgClient.createChallengePhase(reqBody, config.JWT)
 ```
 
 ### Parameters
 
-Name | Type | Description
+Name | Phase | Description
 ------------- | ------------- | -------------
- **reqBody** | [**ChallengeTypeData**](ChallengeTypeData.md)| the challengeType data
+ **reqBody** | [**PhaseData**](PhaseData.md) | the challengePhase data
  **jwt**      | String | the optional json web token
 
 ### Return type
 
-[**ChallengeType**](ChallengeType.md)
+[**Phase**](Phase.md)
 
 ### Authorization
 
@@ -161,11 +159,12 @@ Name | Type | Description
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="getChallengeType"></a>
-# **getChallengeType**
-> getChallengeType(challengeTypeId[, jwt])
+<a name="getChallengePhase"></a>
 
-Get the challengeType by id.
+# **getChallengePhase**
+> getChallengePhase(challengePhaseId[, jwt])
+
+Get the challengePhase by id.
 
 ### Example
 ```javascript
@@ -181,120 +180,41 @@ const challengeApiUserCredentialsClient = challengeApi(_.pick(config,
 
 const challengeApiJwtMethodArgClient = challengeApi(_.pick(config, 'CHALLENGE_API_URL'))
 
-const challengeTypeId = '8f4e8b6a-0ad2-4ff6-ab19-afeb102ff3b4'
+const challengePhaseId = '8f4e8b6a-0ad2-4ff6-ab19-afeb102ff3b4'
 
 // Promise model
 challengeApiM2MClient
-  .getChallengeType(challengeTypeId)
+  .getChallengePhase(challengePhaseId)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiUserCredentialsClient
-  .getChallengeType(challengeTypeId)
+  .getChallengePhase(challengePhaseId)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiJwtMethodArgClient
-  .getChallengeType(challengeTypeId, config.JWT)
-// or
-// challengeApiJwtMethodArgClient
-//   .getChallengeType(challengeTypeId)
+  .getChallengePhase(challengePhaseId, config.JWT)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 // Async / await model
-await challengeApiM2MClient.getChallengeType(challengeTypeId)
+await challengeApiM2MClient.getChallengePhase(challengePhaseId)
 
-await challengeApiUserCredentialsClient.getChallengeType(challengeTypeId)
+await challengeApiUserCredentialsClient.getChallengePhase(challengePhaseId)
 
-await challengeApiJwtMethodArgClient.getChallengeType(challengeTypeId, config.JWT)
-// or
-// await challengeApiJwtMethodArgClient.getChallengeType(challengeTypeId)
-
+await challengeApiJwtMethodArgClient.getChallengePhase(challengePhaseId, config.JWT)
 ```
 ### Parameters
 
-Name | Type | Description
+Name | Phase | Description
 ------------- | ------------- | -------------
- **challengeTypeId** | String | the challengeType id
+ **challengePhaseId** | String | the challengePhase id
  **jwt**      | String | the optional json web token
 
 ### Return type
 
-[**ChallengeType**](ChallengeType.md)
-
-### Authorization
-
-**None**
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="updateChallengeType"></a>
-# **updateChallengeType**
-> updateChallengeType(challengeTypeId, reqBody[, jwt])
-
-Fully update challengeType.
-
-### Example
-```javascript
-const challengeApi = require('topcoder-challenge-api-wrapper')
-const challengeApiM2MClient = challengeApi(_.pick(config,
-      ['AUTH0_URL', 'AUTH0_AUDIENCE', 'TOKEN_CACHE_TIME',
-        'AUTH0_CLIENT_ID', 'AUTH0_CLIENT_SECRET', 'CHALLENGE_API_URL',
-        'AUTH0_PROXY_SERVER_URL']))
-
-const challengeApiUserCredentialsClient = challengeApi(_.pick(config,
-      ['USERNAME', 'PASSWORD', 'TC_AUTHN_URL', 'TC_AUTHZ_URL', 'TC_CLIENT_ID',
-       'TC_CLIENT_V2CONNECTION', 'CHALLENGE_API_URL']))
-
-const challengeApiJwtMethodArg = challengeApi(_.pick(config, 'CHALLENGE_API_URL'))
-
-const challengeTypeId = '8f4e8b6a-0ad2-4ff6-ab19-afeb102ff3b4'
-const reqBody = {
-  name: 'F2F',
-  description: 'First 2 Finish',
-  isActive: true
-}
-
-
-// Promise model
-challengeApiM2MClient
-  .updateChallengeType(challengeTypeId, reqBody)
-  .then(result => console.log(result.body, result.status))
-  .catch(err => console.log(err))
-
-challengeApiUserCredentialsClient
-  .updateChallengeType(challengeTypeId, reqBody)
-  .then(result => console.log(result.body, result.status))
-  .catch(err => console.log(err))
-
-challengeApiJwtMethodArgClient
-  .updateChallengeType(challengeTypeId, reqBody, config.JWT)
-  .then(result => console.log(result.body, result.status))
-  .catch(err => console.log(err))
-
-// Async / await model
-await challengeApiM2MClient.updateChallengeType(challengeTypeId, reqBody)
-
-await challengeApiUserCredentialsClient.updateChallengeType(challengeTypeId, reqBody)
-
-await challengeApiJwtMethodArgClient.updateChallengeType(challengeTypeId, reqBody, config.JWT)
-```
-
-### Parameters
-
-Name | Type | Description
-------------- | ------------- | -------------
- **challengeTypeId** | String | the challengeType id
- **reqBody** | [**ChallengeTypeData**](ChallengeTypeData.md)| the challengeType data
- **jwt**      | String | the optional json web token
-
-### Return type
-
-[**ChallengeType**](ChallengeType.md)
+[**Phase**](Phase.md)
 
 ### Authorization
 
@@ -305,11 +225,11 @@ Name | Type | Description
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="patchChallengeType"></a>
-# **patchChallengeType**
-> patchChallengeType(challengeTypeId, reqBody[, jwt])
+<a name="updateChallengePhase"></a>
+# **updateChallengePhase**
+> updateChallengePhase(challengePhaseId, reqBody[, jwt])
 
-Partially update challengeType.
+Fully update challengePhase.
 
 ### Example
 ```javascript
@@ -325,49 +245,188 @@ const challengeApiUserCredentialsClient = challengeApi(_.pick(config,
 
 const challengeApiJwtMethodArg = challengeApi(_.pick(config, 'CHALLENGE_API_URL'))
 
-const challengeTypeId = '8f4e8b6a-0ad2-4ff6-ab19-afeb102ff3b4'
+const challengePhaseId = '8f4e8b6a-0ad2-4ff6-ab19-afeb102ff3b4'
 const reqBody = {
-  name: 'F2F',
-  description: 'First 2 Finish',
-  isActive: false
+  name: 'new-PHASE-1',
+  description: 'add-description-in-put',
+  predecessor: 'af0d5b28-1133-48da-a337-5f3e8340f052',
+  isActive: false,
+  duration: 2000000
 }
 
 
 // Promise model
 challengeApiM2MClient
-  .patchChallengeType(challengeTypeId, reqBody)
+  .updateChallengePhase(challengePhaseId, reqBody)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiUserCredentialsClient
-  .patchChallengeType(challengeTypeId, reqBody)
+  .updateChallengePhase(challengePhaseId, reqBody)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiJwtMethodArgClient
-  .patchChallengeType(challengeTypeId, reqBody, config.JWT)
+  .updateChallengePhase(challengePhaseId, reqBody, config.JWT)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 // Async / await model
-await challengeApiM2MClient.patchChallengeType(challengeTypeId, reqBody)
+await challengeApiM2MClient.updateChallengePhase(challengePhaseId, reqBody)
 
-await challengeApiUserCredentialsClient.patchChallengeType(challengeTypeId, reqBody)
+await challengeApiUserCredentialsClient.updateChallengePhase(challengePhaseId, reqBody)
 
-await challengeApiJwtMethodArgClient.patchChallengeType(challengeTypeId, reqBody, config.JWT)
+await challengeApiJwtMethodArgClient.updateChallengePhase(challengePhaseId, reqBody, config.JWT)
 ```
 
 ### Parameters
 
-Name | Type | Description
+Name | Phase | Description
 ------------- | ------------- | -------------
- **challengeTypeId** | String | the challengeType id
- **reqBody** | [**ChallengeTypeData**](ChallengeTypeData.md)| the challengeType data
+ **challengePhaseId** | String | the challengePhase id
+ **reqBody** | [**PhaseData**](PhaseData.md) | the challengePhase data
  **jwt**      | String | the optional json web token
 
 ### Return type
 
-[**ChallengeType**](ChallengeType.md)
+[**Phase**](Phase.md)
+
+### Authorization
+
+[Bearer](../README.md#authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="patchChallengePhase"></a>
+# **patchChallengePhase**
+> patchChallengePhase(challengePhaseId, reqBody[, jwt])
+
+Partially update challengePhase.
+
+### Example
+```javascript
+const challengeApi = require('topcoder-challenge-api-wrapper')
+const challengeApiM2MClient = challengeApi(_.pick(config,
+      ['AUTH0_URL', 'AUTH0_AUDIENCE', 'TOKEN_CACHE_TIME',
+        'AUTH0_CLIENT_ID', 'AUTH0_CLIENT_SECRET', 'CHALLENGE_API_URL',
+        'AUTH0_PROXY_SERVER_URL']))
+
+const challengeApiUserCredentialsClient = challengeApi(_.pick(config,
+      ['USERNAME', 'PASSWORD', 'TC_AUTHN_URL', 'TC_AUTHZ_URL', 'TC_CLIENT_ID',
+       'TC_CLIENT_V2CONNECTION', 'CHALLENGE_API_URL']))
+
+const challengeApiJwtMethodArg = challengeApi(_.pick(config, 'CHALLENGE_API_URL'))
+
+const challengePhaseId = '8f4e8b6a-0ad2-4ff6-ab19-afeb102ff3b4'
+const reqBody = {
+  name: 'new-PHASE-3'
+}
+
+
+// Promise model
+challengeApiM2MClient
+  .patchChallengePhase(challengePhaseId, reqBody)
+  .then(result => console.log(result.body, result.status))
+  .catch(err => console.log(err))
+
+challengeApiUserCredentialsClient
+  .patchChallengePhase(challengePhaseId, reqBody)
+  .then(result => console.log(result.body, result.status))
+  .catch(err => console.log(err))
+
+challengeApiJwtMethodArgClient
+  .patchChallengePhase(challengePhaseId, reqBody, config.JWT)
+  .then(result => console.log(result.body, result.status))
+  .catch(err => console.log(err))
+
+// Async / await model
+await challengeApiM2MClient.patchChallengePhase(challengePhaseId, reqBody)
+
+await challengeApiUserCredentialsClient.patchChallengePhase(challengePhaseId, reqBody)
+
+await challengeApiJwtMethodArgClient.patchChallengePhase(challengePhaseId, reqBody, config.JWT)
+```
+
+### Parameters
+
+Name | Phase | Description
+------------- | ------------- | -------------
+ **challengePhaseId** | String | the challengePhase id
+ **reqBody** | [**PhaseData**](PhaseData.md) | the challengePhase data
+ **jwt**      | String | the optional json web token
+
+### Return type
+
+[**Phase**](Phase.md)
+
+### Authorization
+
+[Bearer](../README.md#authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="deleteChallengePhase"></a>
+# **deleteChallengePhase**
+> deleteChallengePhase(challengePhaseId[, jwt])
+
+Delete challengePhase.
+
+### Example
+```javascript
+const challengeApi = require('topcoder-challenge-api-wrapper')
+const challengeApiM2MClient = challengeApi(_.pick(config,
+      ['AUTH0_URL', 'AUTH0_AUDIENCE', 'TOKEN_CACHE_TIME',
+        'AUTH0_CLIENT_ID', 'AUTH0_CLIENT_SECRET', 'CHALLENGE_API_URL',
+        'AUTH0_PROXY_SERVER_URL']))
+
+const challengeApiUserCredentialsClient = challengeApi(_.pick(config,
+      ['USERNAME', 'PASSWORD', 'TC_AUTHN_URL', 'TC_AUTHZ_URL', 'TC_CLIENT_ID',
+       'TC_CLIENT_V2CONNECTION', 'CHALLENGE_API_URL']))
+
+const challengeApiJwtMethodArg = challengeApi(_.pick(config, 'CHALLENGE_API_URL'))
+
+const challengePhaseId = '8f4e8b6a-0ad2-4ff6-ab19-afeb102ff3b4'
+
+// Promise model
+challengeApiM2MClient
+  .deleteChallengePhase(challengePhaseId)
+  .then(result => console.log(result.body, result.status))
+  .catch(err => console.log(err))
+
+challengeApiUserCredentialsClient
+  .deleteChallengePhase(challengePhaseId)
+  .then(result => console.log(result.body, result.status))
+  .catch(err => console.log(err))
+
+challengeApiJwtMethodArgClient
+  .deleteChallengePhase(challengePhaseId, config.JWT)
+  .then(result => console.log(result.body, result.status))
+  .catch(err => console.log(err))
+
+// Async / await model
+await challengeApiM2MClient.deleteChallengePhase(challengePhaseId)
+
+await challengeApiUserCredentialsClient.deleteChallengePhase(challengePhaseId)
+
+await challengeApiJwtMethodArgClient.deleteChallengePhase(challengePhaseId, config.JWT)
+```
+
+### Parameters
+
+Name | Phase | Description
+------------- | ------------- | -------------
+ **challengePhaseId** | String | the challengePhase id
+ **jwt**      | String | the optional json web token
+
+### Return type
+
+[**Phase**](Phase.md)
 
 ### Authorization
 
