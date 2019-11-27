@@ -170,6 +170,45 @@ module.exports = (allConfig) => {
     // Get challengePhase
     deleteChallengePhase: (challengePhaseId, jwt) => {
       return require('./src/ChallengePhasesApi').deleteChallengePhase(config, challengePhaseId, jwt)
+    },
+    // -- timelineTemplates APIs --
+    // Search timelineTemplates
+    searchTimelineTemplates: (reqQuery, jwt) => {
+      return require('./src/TimelineTemplatesApi').searchTimelineTemplates(config, reqQuery, jwt)
+    },
+    // Create timelineTemplate
+    createTimelineTemplate: (reqBody, jwt) => {
+      return require('./src/TimelineTemplatesApi').createTimelineTemplate(config, reqBody, jwt)
+    },
+    // Get timelineTemplate
+    getTimelineTemplate: (timelineTemplateId, jwt) => {
+      return require('./src/TimelineTemplatesApi').getTimelineTemplate(config, timelineTemplateId, jwt)
+    },
+    // Fully update timelineTemplate
+    updateTimelineTemplate: (timelineTemplateId, reqBody, jwt) => {
+      return require('./src/TimelineTemplatesApi').updateTimelineTemplate(config, timelineTemplateId, reqBody, jwt)
+    },
+    // Partially update timelineTemplate
+    patchTimelineTemplate: (timelineTemplateId, reqBody, jwt) => {
+      return require('./src/TimelineTemplatesApi').patchTimelineTemplate(config, timelineTemplateId, reqBody, jwt)
+    },
+    // Delete timelineTemplate
+    deleteTimelineTemplate: (timelineTemplateId, jwt) => {
+      return require('./src/TimelineTemplatesApi').deleteTimelineTemplate(config, timelineTemplateId, jwt)
+    },
+    // -- challengeAuditLogs APIS --
+    // Search challengeAuditLogs
+    searchChallengeAuditLogs: (reqQuery, jwt) => {
+      return require('./src/ChallengeAuditLogsApi').searchChallengeAuditLogs(config, reqQuery, jwt)
+    },
+    // -- challengeAttachments APIS --
+    // Create challengeAttachment
+    createChallengeAttachment: (challengeId, reqFormData, jwt) => {
+      return require('./src/ChallengeAttachmentsApi').createChallengeAttachment(config, challengeId, reqFormData, jwt)
+    },
+    // Download challengeAttachment
+    downloadChallengeAttachment: (challengeId, attachmentId, jwt) => {
+      return require('./src/ChallengeAttachmentsApi').downloadChallengeAttachment(config, challengeId, attachmentId, jwt)
     }
   }
 }

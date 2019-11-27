@@ -1,6 +1,8 @@
 /*
  * Setup nock for test.
  */
+const fs = require('fs')
+const path = require('path')
 const prepare = require('mocha-prepare')
 const nock = require('nock')
 
@@ -35,6 +37,23 @@ prepare(function (done) {
     })
     .post(testData.AUTHZ_PATH)
     .reply(200, testData.ResponseBody.Authv3)
+    .get(/\/challenges\/.*\/attachments\/.*/)
+    .reply(function (_uri, _requestBody) {
+      if (this.req.headers.authorization === 'Bearer invalid_token') {
+        return [400, { message: 'Unkown Error' }]
+      }
+      return [200, fs.readFileSync(path.resolve(__dirname, './common/fileToUpload.txt'))]
+    })
+    .post(/\/challenges\/.*\/attachments/)
+    .reply(function (_uri, _requestBody) {
+      if (!this.req.headers['content-type']) {
+        return [400, { message: 'No attachment' }]
+      }
+      if (this.req.headers.authorization === 'Bearer invalid_token') {
+        return [400, { message: 'Unkown Error' }]
+      }
+      return [200, testData.ResponseBody.createChallengeAttachmentResponse]
+    })
     .get(/\/challenges\/.*/)
     .reply(function (_uri, _requestBody) {
       return [200, testData.ResponseBody.getChallengeResponse]
@@ -162,6 +181,58 @@ prepare(function (done) {
         return [400, { message: 'Unkown Error' }]
       }
       return [200, testData.ResponseBody.deleteChallengePhaseResponse]
+    })
+    .get(/\/timelineTemplates\/.*/)
+    .reply(function (_uri, _requestBody) {
+      if (!this.req.headers.authorization) {
+        return [401, { message: 'Unauthorized Error' }]
+      }
+      if (this.req.headers.authorization === 'Bearer invalid_token') {
+        return [400, { message: 'Unkown Error' }]
+      }
+      return [200, testData.ResponseBody.getTimelineTemplateResponse]
+    })
+    .get(/\/timelineTemplates.*/)
+    .reply(function (_uri, _requestBody) {
+      if (this.req.headers.authorization === 'Bearer invalid_token') {
+        return [400, { message: 'Unkown Error' }]
+      }
+      return [200, testData.ResponseBody.searchTimelineTemplatesResponse]
+    })
+    .post('/timelineTemplates')
+    .reply(function (_uri, _requestBody) {
+      if (this.req.headers.authorization === 'Bearer invalid_token') {
+        return [400, { message: 'Unkown Error' }]
+      }
+      return [200, testData.ResponseBody.createTimelineTemplateResponse]
+    })
+    .put(/\/timelineTemplates\/.+/)
+    .reply(function (_uri, _requestBody) {
+      if (this.req.headers.authorization === 'Bearer invalid_token') {
+        return [400, { message: 'Unkown Error' }]
+      }
+      return [200, testData.ResponseBody.updateTimelineTemplateResponse]
+    })
+    .patch(/\/timelineTemplates\/.+/)
+    .reply(function (_uri, _requestBody) {
+      if (this.req.headers.authorization === 'Bearer invalid_token') {
+        return [400, { message: 'Unkown Error' }]
+      }
+      return [200, testData.ResponseBody.patchTimelineTemplateResponse]
+    })
+    .delete(/\/timelineTemplates\/.+/)
+    .reply(function (_uri, _requestBody) {
+      if (this.req.headers.authorization === 'Bearer invalid_token') {
+        return [400, { message: 'Unkown Error' }]
+      }
+      return [200, testData.ResponseBody.deleteTimelineTemplateResponse]
+    })
+    .get(/\/challengeAuditLogs.*/)
+    .reply(function (_uri, _requestBody) {
+      if (this.req.headers.authorization === 'Bearer invalid_token') {
+        return [400, { message: 'Unkown Error' }]
+      }
+      return [200, testData.ResponseBody.searchChallengeAuditLogsResponse]
     })
   done()
 }, function (done) {

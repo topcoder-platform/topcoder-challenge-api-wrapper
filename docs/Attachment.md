@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**challengeId** | **string(UUID)** |  | 
-**fileName** | **string** |  | 
-**fileSize** | **integer** |  | 
-**id** | **string(UUID)** |  | 
+**challengeId** | **string(UUID)** | the challenge id |
+**fileName** | **string** | the file name |
+**fileSize** | **integer** | the file size |
+**id** | **string(UUID)** | the attachment id |

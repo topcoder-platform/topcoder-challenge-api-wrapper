@@ -69,6 +69,24 @@ const updateChallengePhaseResponse = Object.assign({}, createChallengePhaseRespo
 const patchChallengePhaseResponse = Object.assign({}, createChallengePhaseResponse, patchChallengePhaseRequestBody)
 const deleteChallengePhaseResponse = createChallengePhaseResponse
 
+// timelineTemplatesApi
+const createTimelineTemplateRequestBody = require('./createTimelineTemplateRequestBody.json')
+const updateTimelineTemplateRequestBody = Object.assign({}, createTimelineTemplateRequestBody, { description: 'description' })
+const patchTimelineTemplateRequestBody = Object.assign({}, createTimelineTemplateRequestBody, { isActive: false })
+
+const searchTimelineTemplatesResponse = require('./searchTimelineTemplatesResponse.json')
+const getTimelineTemplateResponse = searchTimelineTemplatesResponse[0]
+const createTimelineTemplateResponse = searchTimelineTemplatesResponse[0]
+const updateTimelineTemplateResponse = require('./updateTimelineTemplateResponse.json')
+const patchTimelineTemplateResponse = require('./patchTimelineTemplateResponse.json')
+const deleteTimelineTemplateResponse = patchTimelineTemplateResponse
+
+// challengeAuditLogsApi
+const searchChallengeAuditLogsResponse = require('./searchChallengeAuditLogsResponse.json')
+
+// challengeAttachmentsApi
+const createChallengeAttachmentResponse = require('./createChallengeAttachmentResponse.json')
+
 module.exports = {
   Url: {
     CHALLENGE_API_URL
@@ -115,7 +133,10 @@ module.exports = {
     updateChallengeSettingRequestBody,
     createChallengePhaseRequestBody,
     updateChallengePhaseRequestBody,
-    patchChallengePhaseRequestBody
+    patchChallengePhaseRequestBody,
+    createTimelineTemplateRequestBody,
+    updateTimelineTemplateRequestBody,
+    patchTimelineTemplateRequestBody
   },
   ResponseBody: {
     Authv2: {
@@ -156,7 +177,15 @@ module.exports = {
     searchChallengePhasesResponse,
     updateChallengePhaseResponse,
     patchChallengePhaseResponse,
-    deleteChallengePhaseResponse
+    deleteChallengePhaseResponse,
+    searchTimelineTemplatesResponse,
+    getTimelineTemplateResponse,
+    createTimelineTemplateResponse,
+    updateTimelineTemplateResponse,
+    patchTimelineTemplateResponse,
+    deleteTimelineTemplateResponse,
+    searchChallengeAuditLogsResponse,
+    createChallengeAttachmentResponse
   },
   RequestQuery: {
     searchChallenges: {
@@ -193,6 +222,18 @@ module.exports = {
       page: 1,
       perPage: 10,
       name: 'Registration'
+    },
+    searchTimelineTemplates: {
+      page: 1,
+      perPage: 10,
+      name: 'template-1'
+    },
+    searchChallengeAuditLogs: {
+      page: 1,
+      perPage: 10,
+      challengeId: '64abe45b-406e-42a4-9ac5-74994b343f42',
+      createdDateStart: '2017-02-22T00:00:00Z',
+      createdDateEnd: '2022-03-22T00:00:00Z'
     }
   }
 }

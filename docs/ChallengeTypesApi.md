@@ -248,7 +248,7 @@ const challengeApiM2MClient = challengeApi(_.pick(config,
 
 const challengeApiUserCredentialsClient = challengeApi(_.pick(config,
       ['USERNAME', 'PASSWORD', 'TC_AUTHN_URL', 'TC_AUTHZ_URL', 'TC_CLIENT_ID',
-       'TC_CLIENT_V2_CONNECTION', 'CHALLENGE_API_URL']))
+       'TC_CLIENT_V2CONNECTION', 'CHALLENGE_API_URL']))
 
 const challengeApiJwtMethodArg = challengeApi(_.pick(config, 'CHALLENGE_API_URL'))
 
@@ -321,7 +321,7 @@ const challengeApiM2MClient = challengeApi(_.pick(config,
 
 const challengeApiUserCredentialsClient = challengeApi(_.pick(config,
       ['USERNAME', 'PASSWORD', 'TC_AUTHN_URL', 'TC_AUTHZ_URL', 'TC_CLIENT_ID',
-       'TC_CLIENT_V2_CONNECTION', 'CHALLENGE_API_URL']))
+       'TC_CLIENT_V2CONNECTION', 'CHALLENGE_API_URL']))
 
 const challengeApiJwtMethodArg = challengeApi(_.pick(config, 'CHALLENGE_API_URL'))
 

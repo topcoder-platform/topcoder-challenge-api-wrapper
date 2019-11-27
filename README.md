@@ -128,6 +128,27 @@ Method | HTTP request | Description
 [**patchChallengePhase**](docs/ChallengePhasesApi.md#patchchallengephase) | **PATCH** /challengePhases/:challengePhaseId | Partially update challengePhase.
 [**deleteChallengePhase**](docs/ChallengePhasesApi.md#deletechallengephase) | **DELETE** /challengePhases/:challengePhaseId | Delete challengePhase.
 
+### TimelineTemplates wrapper methods
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**searchTimelineTemplates**](docs/TimelineTemplatesApi.md#searchtimelinetemplates) | **GET** /timelineTemplates | Search timelineTemplates.
+[**createTimelineTemplate**](docs/TimelineTemplatesApi.md#createtimelinetemplate) | **POST** /timelineTemplate | Create a timelineTemplate.
+[**getTimelineTemplate**](docs/TimelineTemplatesApi.md#gettimelinetemplate) | **GET** /timelineTemplates/:timelineTemplateId | Get the timelineTemplate.
+[**updateTimelineTemplate**](docs/TimelineTemplatesApi.md#updatetimelinetemplate) | **PUT** /timelineTemplates/:timelineTemplateId | Fully update timelineTemplate.
+[**patchTimelineTemplate**](docs/TimelineTemplatesApi.md#patchtimelinetemplate) | **PATCH** /timelineTemplates/:timelineTemplateId | Partially update timelineTemplate.
+[**deleteTimelineTemplate**](docs/TimelineTemplatesApi.md#deletetimelinetemplate) | **DELETE** /timelineTemplates/:timelineTemplateId | Delete the timelineTemplate.
+
+### ChallengeAuditLogs wrapper methods
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**searchChallengeAuditLogs**](docs/ChallengeAuditLogsApi.md#searchchallengeauditlogs) | **GET** /challengeAuditLogs | Search challenge auditLogs.
+
+### ChallengeAttachments wrapper methods
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**createChallengeAttachment**](docs/ChallengeAttachmentsApi.md#createchallengeattachment) | **POST** /challenges/:challengeId/attachments | Create a challenge attachment.
+[**downloadChallengeAttachment**](docs/ChallengeAttachmentsApi.md#downloadchallengeattachment) | **GET** /challenges/:challengeId/attachments/:attachmentId | Download a challenge attachment.
+
 ## Authorization
 
 The wrapper internally generates the JWT token based on the method used when initialising the wrapper (m2m v/s user) or uses the jwt passed during method invocation and passes it in the `Authorization` header.

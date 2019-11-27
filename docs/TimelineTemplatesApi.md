@@ -1,22 +1,21 @@
-# ChallengePhases Api
+# TimelineTemplates Api
 
 All URIs are relative to **CHALLENGE_API_URL** configuration variable.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**searchChallengePhases**](#searchchallengephases) | **GET** /challengePhases | Search challengePhases.
-[**createChallengePhase**](#createchallengephase) | **POST** /challengePhases | Create a challengePhase.
-[**getChallengePhase**](#getchallengephase) | **GET** /challengePhases/:challengePhaseId | Get the challengePhase.
-[**updateChallengePhase**](#updatechallengephase) | **PUT** /challengePhases/:challengePhaseId | Fully update challengePhase.
-[**patchChallengePhase**](#patchchallengephase) | **PATCH** /challengePhases/:challengePhaseId | Partially update challengePhase.
-[**deleteChallengePhase**](#deletechallengephase) | **DELETE** /challengePhases/:challengePhaseId | Delete challengePhase.
+[**searchTimelineTemplates**](TimelineTemplatesApi.md#searchtimelinetemplates) | **GET** /timelineTemplates | Search timelineTemplates.
+[**createTimelineTemplate**](TimelineTemplatesApi.md#createtimelinetemplate) | **POST** /timelineTemplates | Create a timelineTemplate.
+[**getTimelineTemplate**](TimelineTemplatesApi.md#gettimelinetemplate) | **GET** /timelineTemplates/:timelineTemplateId | Get the timelineTemplate.
+[**updateTimelineTemplate**](TimelineTemplatesApi.md#updatetimelinetemplate) | **PUT** /timelineTemplates/:timelineTemplateId | Fully update timelineTemplate.
+[**patchTimelineTemplate**](TimelineTemplatesApi.md#patchtimelinetemplate) | **PATCH** /timelineTemplates/:timelineTemplateId | Partially update timelineTemplate.
+[**deleteTimelineTemplate**](TimelineTemplatesApi.md#deletetimelinetemplate) | **DELETE** /timelineTemplates/:timelineTemplateId | Delete the timelineTemplate.
 
-<a name="searchChallengePhases"></a>
+<a name="searchTimelineTemplates"></a>
+# **searchTimelineTemplates**
+> searchTimelineTemplates(reqQuery[, jwt])
 
-# **searchChallengePhases**
-> searchChallengePhases(reqQuery[, jwt])
-
-Search challengePhases. Link headers are sent back and they have rel set to prev, next, first, last and contain the relevant URL.
+Search timelineTemplates. Link headers are sent back and they have rel set to prev, next, first, last and contain the relevant URL.
 
 ### Example
 ```javascript
@@ -36,45 +35,45 @@ const challengeApiJwtMethodArgClient = challengeApi(_.pick(config,
 const reqQuery = {
   page: 1,
   perPage: 10,
-  name: 'Code'
+  name: 'template-1'
 }
 
 
 // Promise model
 challengeApiM2MClient
-  .searchChallengePhases(reqQuery)
+  .searchTimelineTemplates(reqQuery)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiUserCredentialsClient
-  .searchChallengePhases(reqQuery)
+  .searchTimelineTemplates(reqQuery)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 
 challengeApiJwtMethodArgClient
-  .searchChallengePhases(reqQuery, config.JWT)
+  .searchTimelineTemplates(reqQuery, config.JWT)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 // Async / await model
-await challengeApiM2MClient.searchChallengePhases(reqQuery)
+await challengeApiM2MClient.searchTimelineTemplates(reqQuery)
 
-await challengeApiUserCredentialsClient.searchChallengePhases(reqQuery)
+await challengeApiUserCredentialsClient.searchTimelineTemplates(reqQuery)
 
-await challengeApiJwtMethodArgClient.searchChallengePhases(reqQuery, config.JWT)
+await challengeApiJwtMethodArgClient.searchTimelineTemplates(reqQuery, config.JWT)
 ```
 
 ### Parameters
 
 Name | Phase | Description
 ------------- | ------------- | -------------
- **reqQuery** | [**SearchChallengePhasesCriteria**](SearchChallengePhasesCriteria.md)| the search challengePhases criteria
+ **reqQuery** | [**SearchTimelineTemplatesCriteria**](SearchTimelineTemplatesCriteria.md)| the search TimelineTemplates criteria
  **jwt**      | String | the optional json web token
 
 ### Return type
 
-Array of [**Phase**](Phase.md)
+Array of [**TimelineTemplate**](TimelineTemplate.md)
 
 ### Authorization
 
@@ -85,12 +84,11 @@ Array of [**Phase**](Phase.md)
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="createChallengePhase"></a>
+<a name="createTimelineTemplate"></a>
+# **createTimelineTemplate**
+> createTimelineTemplate(reqBody[, jwt])
 
-# **createChallengePhase**
-> createChallengePhase(reqBody[, jwt])
-
-Create a challengePhase.
+Create a timelineTemplate.
 
 ### Example
 ```javascript
@@ -107,48 +105,53 @@ const challengeApiUserCredentialsClient = challengeApi(_.pick(config,
 const challengeApiJwtMethodArgClient = challengeApi(_.pick(config, 'CHALLENGE_API_URL'))
 
 const reqBody = {
-  name: 'new-PHASE-2',
-  description: 'add-description-in-put',
-  predecessor: 'af0d5b28-1133-48da-a337-5f3e8340f052',
+  name: 'template-1',
   isActive: true,
-  duration: 2000000
+  phases: [
+    {
+      id: '74315132-79fa-4d13-a9ac-71f50020dc10',
+      name: 'Submission',
+      isActive: true,
+      duration: 86400
+    }
+  ]
 }
 
 
 // Promise model
 challengeApiM2MClient
-  .createChallengePhase(reqBody)
+  .createTimelineTemplate(reqBody)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiUserCredentialsClient
-  .createChallengePhase(reqBody)
+  .createTimelineTemplate(reqBody)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiJwtMethodArgClient
-  .createChallengePhase(reqBody, config.JWT)
+  .createTimelineTemplate(reqBody, config.JWT)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 // Async / await model
-await challengeApiM2MClient.createChallengePhase(reqBody)
+await challengeApiM2MClient.createTimelineTemplate(reqBody)
 
-await challengeApiUserCredentialsClient.createChallengePhase(reqBody)
+await challengeApiUserCredentialsClient.createTimelineTemplate(reqBody)
 
-await challengeApiJwtMethodArgClient.createChallengePhase(reqBody, config.JWT)
+await challengeApiJwtMethodArgClient.createTimelineTemplate(reqBody, config.JWT)
 ```
 
 ### Parameters
 
 Name | Phase | Description
 ------------- | ------------- | -------------
- **reqBody** | [**PhaseData**](PhaseData.md) | the challengePhase data
+ **reqBody** | [**TimelineTemplateData**](TimelineTemplateData.md)| the TimelineTemplate data
  **jwt**      | String | the optional json web token
 
 ### Return type
 
-[**Phase**](Phase.md)
+[**TimelineTemplate**](TimelineTemplate.md)
 
 ### Authorization
 
@@ -159,12 +162,11 @@ Name | Phase | Description
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="getChallengePhase"></a>
+<a name="getTimelineTemplate"></a>
+# **getTimelineTemplate**
+> getTimelineTemplate(timelineTemplateId[, jwt])
 
-# **getChallengePhase**
-> getChallengePhase(challengePhaseId[, jwt])
-
-Get the challengePhase by id.
+Get the timelineTemplate by id.
 
 ### Example
 ```javascript
@@ -180,41 +182,41 @@ const challengeApiUserCredentialsClient = challengeApi(_.pick(config,
 
 const challengeApiJwtMethodArgClient = challengeApi(_.pick(config, 'CHALLENGE_API_URL'))
 
-const challengePhaseId = '8f4e8b6a-0ad2-4ff6-ab19-afeb102ff3b4'
+const timelineTemplateId = '8f4e8b6a-0ad2-4ff6-ab19-afeb102ff3b4'
 
 // Promise model
 challengeApiM2MClient
-  .getChallengePhase(challengePhaseId)
+  .getTimelineTemplate(timelineTemplateId)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiUserCredentialsClient
-  .getChallengePhase(challengePhaseId)
+  .getTimelineTemplate(timelineTemplateId)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiJwtMethodArgClient
-  .getChallengePhase(challengePhaseId, config.JWT)
+  .getTimelineTemplate(timelineTemplateId, config.JWT)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 // Async / await model
-await challengeApiM2MClient.getChallengePhase(challengePhaseId)
+await challengeApiM2MClient.getTimelineTemplate(timelineTemplateId)
 
-await challengeApiUserCredentialsClient.getChallengePhase(challengePhaseId)
+await challengeApiUserCredentialsClient.getTimelineTemplate(timelineTemplateId)
 
-await challengeApiJwtMethodArgClient.getChallengePhase(challengePhaseId, config.JWT)
+await challengeApiJwtMethodArgClient.getTimelineTemplate(timelineTemplateId, config.JWT)
 ```
 ### Parameters
 
 Name | Phase | Description
 ------------- | ------------- | -------------
- **challengePhaseId** | String | the challengePhase id
+ **timelineTemplateId** | String | the timelineTemplate id
  **jwt**      | String | the optional json web token
 
 ### Return type
 
-[**Phase**](Phase.md)
+[**TimelineTemplate**](TimelineTemplate.md)
 
 ### Authorization
 
@@ -225,11 +227,11 @@ Name | Phase | Description
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="updateChallengePhase"></a>
-# **updateChallengePhase**
-> updateChallengePhase(challengePhaseId, reqBody[, jwt])
+<a name="updateTimelineTemplate"></a>
+# **updateTimelineTemplate**
+> updateTimelineTemplate(timelineTemplateId, reqBody[, jwt])
 
-Fully update challengePhase.
+Fully update timelineTemplate.
 
 ### Example
 ```javascript
@@ -245,51 +247,64 @@ const challengeApiUserCredentialsClient = challengeApi(_.pick(config,
 
 const challengeApiJwtMethodArg = challengeApi(_.pick(config, 'CHALLENGE_API_URL'))
 
-const challengePhaseId = '8f4e8b6a-0ad2-4ff6-ab19-afeb102ff3b4'
+const timelineTemplateId = '8f4e8b6a-0ad2-4ff6-ab19-afeb102ff3b4'
 const reqBody = {
-  name: 'new-PHASE-1',
-  description: 'add-description-in-put',
-  predecessor: 'af0d5b28-1133-48da-a337-5f3e8340f052',
-  isActive: false,
-  duration: 2000000
+  name: 'template-1',
+  description: 'description',
+  isActive: true,
+  phases: [
+    {
+      id: '74315132-79fa-4d13-a9ac-71f50020dc10',
+      name: 'Submission',
+      isActive: true,
+      duration: 86400
+    },
+    {
+      id: '74315132-79fa-4d13-a9ac-71f50020dc11',
+      name: 'Review',
+      description: 'Review phase',
+      isActive: true,
+      duration: 86400
+    }
+  ]
 }
 
 
 // Promise model
 challengeApiM2MClient
-  .updateChallengePhase(challengePhaseId, reqBody)
+  .updateTimelineTemplate(timelineTemplateId, reqBody)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiUserCredentialsClient
-  .updateChallengePhase(challengePhaseId, reqBody)
+  .updateTimelineTemplate(timelineTemplateId, reqBody)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiJwtMethodArgClient
-  .updateChallengePhase(challengePhaseId, reqBody, config.JWT)
+  .updateTimelineTemplate(timelineTemplateId, reqBody, config.JWT)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 // Async / await model
-await challengeApiM2MClient.updateChallengePhase(challengePhaseId, reqBody)
+await challengeApiM2MClient.updateTimelineTemplate(timelineTemplateId, reqBody)
 
-await challengeApiUserCredentialsClient.updateChallengePhase(challengePhaseId, reqBody)
+await challengeApiUserCredentialsClient.updateTimelineTemplate(timelineTemplateId, reqBody)
 
-await challengeApiJwtMethodArgClient.updateChallengePhase(challengePhaseId, reqBody, config.JWT)
+await challengeApiJwtMethodArgClient.updateTimelineTemplate(timelineTemplateId, reqBody, config.JWT)
 ```
 
 ### Parameters
 
 Name | Phase | Description
 ------------- | ------------- | -------------
- **challengePhaseId** | String | the challengePhase id
- **reqBody** | [**PhaseData**](PhaseData.md) | the challengePhase data
+ **timelineTemplateId** | String | the timelineTemplate id
+ **reqBody** | [**TimelineTemplateData**](TimelineTemplateData.md)| the timelineTemplate data
  **jwt**      | String | the optional json web token
 
 ### Return type
 
-[**Phase**](Phase.md)
+[**TimelineTemplate**](TimelineTemplate.md)
 
 ### Authorization
 
@@ -300,11 +315,11 @@ Name | Phase | Description
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="patchChallengePhase"></a>
-# **patchChallengePhase**
-> patchChallengePhase(challengePhaseId, reqBody[, jwt])
+<a name="patchTimelineTemplate"></a>
+# **patchTimelineTemplate**
+> patchTimelineTemplate(timelineTemplateId, reqBody[, jwt])
 
-Partially update challengePhase.
+Partially update timelineTemplate.
 
 ### Example
 ```javascript
@@ -320,47 +335,48 @@ const challengeApiUserCredentialsClient = challengeApi(_.pick(config,
 
 const challengeApiJwtMethodArg = challengeApi(_.pick(config, 'CHALLENGE_API_URL'))
 
-const challengePhaseId = '8f4e8b6a-0ad2-4ff6-ab19-afeb102ff3b4'
+const timelineTemplateId = '8f4e8b6a-0ad2-4ff6-ab19-afeb102ff3b4'
 const reqBody = {
-  name: 'new-PHASE-3'
+  description: 'patch description'
+  isActive: false
 }
 
 
 // Promise model
 challengeApiM2MClient
-  .patchChallengePhase(challengePhaseId, reqBody)
+  .patchTimelineTemplate(timelineTemplateId, reqBody)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiUserCredentialsClient
-  .patchChallengePhase(challengePhaseId, reqBody)
+  .patchTimelineTemplate(timelineTemplateId, reqBody)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiJwtMethodArgClient
-  .patchChallengePhase(challengePhaseId, reqBody, config.JWT)
+  .patchTimelineTemplate(timelineTemplateId, reqBody, config.JWT)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 // Async / await model
-await challengeApiM2MClient.patchChallengePhase(challengePhaseId, reqBody)
+await challengeApiM2MClient.patchTimelineTemplate(timelineTemplateId, reqBody)
 
-await challengeApiUserCredentialsClient.patchChallengePhase(challengePhaseId, reqBody)
+await challengeApiUserCredentialsClient.patchTimelineTemplate(timelineTemplateId, reqBody)
 
-await challengeApiJwtMethodArgClient.patchChallengePhase(challengePhaseId, reqBody, config.JWT)
+await challengeApiJwtMethodArgClient.patchTimelineTemplate(timelineTemplateId, reqBody, config.JWT)
 ```
 
 ### Parameters
 
 Name | Phase | Description
 ------------- | ------------- | -------------
- **challengePhaseId** | String | the challengePhase id
- **reqBody** | [**PhaseData**](PhaseData.md) | the challengePhase data
+ **timelineTemplateId** | String | the timelineTemplate id
+ **reqBody** | [**TimelineTemplateData**](TimelineTemplateData.md)| the timelineTemplate data
  **jwt**      | String | the optional json web token
 
 ### Return type
 
-[**Phase**](Phase.md)
+[**TimelineTemplate**](TimelineTemplate.md)
 
 ### Authorization
 
@@ -371,11 +387,11 @@ Name | Phase | Description
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="deleteChallengePhase"></a>
-# **deleteChallengePhase**
-> deleteChallengePhase(challengePhaseId[, jwt])
+<a name="deleteTimelineTemplate"></a>
+# **deleteTimelineTemplate**
+> deleteTimelineTemplate(timelineTemplateId[, jwt])
 
-Delete challengePhase.
+Delete the timelineTemplate by id.
 
 ### Example
 ```javascript
@@ -389,44 +405,43 @@ const challengeApiUserCredentialsClient = challengeApi(_.pick(config,
       ['USERNAME', 'PASSWORD', 'TC_AUTHN_URL', 'TC_AUTHZ_URL', 'TC_CLIENT_ID',
        'TC_CLIENT_V2CONNECTION', 'CHALLENGE_API_URL']))
 
-const challengeApiJwtMethodArg = challengeApi(_.pick(config, 'CHALLENGE_API_URL'))
+const challengeApiJwtMethodArgClient = challengeApi(_.pick(config, 'CHALLENGE_API_URL'))
 
-const challengePhaseId = '8f4e8b6a-0ad2-4ff6-ab19-afeb102ff3b4'
+const timelineTemplateId = '8f4e8b6a-0ad2-4ff6-ab19-afeb102ff3b4'
 
 // Promise model
 challengeApiM2MClient
-  .deleteChallengePhase(challengePhaseId)
+  .deleteTimelineTemplate(timelineTemplateId)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiUserCredentialsClient
-  .deleteChallengePhase(challengePhaseId)
+  .deleteTimelineTemplate(timelineTemplateId)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiJwtMethodArgClient
-  .deleteChallengePhase(challengePhaseId, config.JWT)
+  .deleteTimelineTemplate(timelineTemplateId, config.JWT)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 // Async / await model
-await challengeApiM2MClient.deleteChallengePhase(challengePhaseId)
+await challengeApiM2MClient.deleteTimelineTemplate(timelineTemplateId)
 
-await challengeApiUserCredentialsClient.deleteChallengePhase(challengePhaseId)
+await challengeApiUserCredentialsClient.deleteTimelineTemplate(timelineTemplateId)
 
-await challengeApiJwtMethodArgClient.deleteChallengePhase(challengePhaseId, config.JWT)
+await challengeApiJwtMethodArgClient.deleteTimelineTemplate(timelineTemplateId, config.JWT)
 ```
-
 ### Parameters
 
 Name | Phase | Description
 ------------- | ------------- | -------------
- **challengePhaseId** | String | the challengePhase id
+ **timelineTemplateId** | String | the timelineTemplate id
  **jwt**      | String | the optional json web token
 
 ### Return type
 
-[**Phase**](Phase.md)
+[**TimelineTemplate**](TimelineTemplate.md)
 
 ### Authorization
 
