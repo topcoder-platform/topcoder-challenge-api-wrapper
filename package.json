@@ -12,7 +12,7 @@
   "dependencies": {
     "@hapi/joi": "^16.1.5",
     "lodash": "^4.17.15",
-    "superagent": "^5.1.0",
+    "superagent": "^5.3.1",
     "tc-core-library-js": "github:appirio-tech/tc-core-library-js"
   },
   "devDependencies": {
