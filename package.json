@@ -10,7 +10,7 @@
     "lint:fix": "npx standard --fix"
   },
   "dependencies": {
-    "@hapi/joi": "^16.1.5",
+    "@hapi/joi": "^16.1.8",
     "lodash": "^4.17.15",
     "superagent": "^5.1.0",
     "tc-core-library-js": "github:appirio-tech/tc-core-library-js"
